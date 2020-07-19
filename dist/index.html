@@ -1,29 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expense Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="materialize-css/dist/css/materialize.min.css" media="screen,projection" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
+        integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    
-    <h1>HOME</h1>
 
-    <div id="side-bar">
-        <h1 id="title">Expense Manager</h1>
-        <ul id="side-bar-list">
-            <li class="side-bar-items"><a href="index.html">Home</a></li>
-            <li class="side-bar-items"><a href="add.html">Add Expenses</a></li>
-            <li class="side-bar-items"><a href="log.html">Expenses Log</a></li>
+<body>
+
+    <div class="navbar">
+        <ul class="navbar-nav">
+            <li class="logo">
+                <a href="/" class="nav-link">
+                    <i class="fas fa-chart-pie fa-primary fa-secondary fa-2x"></i>
+                    <span class="link-text">Expense Manager</span>
+                </a>
+            </li>
+            <li class="nav-item home">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-user-circle fa-primary fa-secondary fa-2x"></i>
+                    <span class="link-text">Home</span>
+                </a>
+            </li>
+            <li class="nav-item add">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-wallet fa-2x fa-primary fa-secondary"></i>
+                    <span class="link-text">Add</span>
+                </a>
+            </li>
+            <li class="nav-item log">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-book fa-2x fa-primary fa-secondary"></i>
+                    <span class="link-text">Log</span>
+                </a>
+            </li>
         </ul>
     </div>
 
+    <div class="main-container">
 
+    </div>
+
+    <script id="landing-page-template" type="text/x-handlebars-template">
+        <h1 class="title">Expense Manager</h1>
+        <i class="fas fa-chart-pie fa-primary fa-6x"></i>
+        <a class="waves-effect waves-light btn-large btn-flat hoverable">Dashboard</a>
+    </script>
+
+    <script id="add-page-template" type="text/x-handlebars-template">
+        <h1 class="title col s10 offset-s1">Add an Expense</h1>
+        <div class="row add-form add-page">
+            <form class="col s12">
+                <div class="row add-form">
+                    <div class="input-field col s10">
+                        <input placeholder="Name" name="name" id="name" type="text" class="validate">
+                        <label class="active" for="name">Name</label>
+                    </div>
+                </div>
+                <div class="row add-form">
+                    <div class="input-field col s10">
+                        <input placeholder="Expense" name="expense" id="expense" type="text" class="validate">
+                        <label class="active" for="expense">Expense</label>
+                    </div>
+                </div>
+                <div class="row add-form">
+                    <div class="input-field col s10">
+                        <input placeholder="Amount" name="amout" id="amount" type="number" class="validate">
+                        <label class="active" for="amount">Amount</label>
+                    </div>
+                </div>
+                <div class="row add-form">
+                     <div class="input-field col s10">
+                        <select>
+                            <option value="bills">Bills</option>
+                            <option value="rent">Rent</option>
+                            <option value="misc">Misc</option>
+                            <option value="food">Food</option>
+                            <option value="fun">Fun</option>
+                        </select>
+                        <label>Catagory</label>
+                    </div>
+                </div>
+                <div class="row add-form">
+                    <input placeholder="Date" type="text" class="input-field datepicker col s10">
+                </div>
+                <div class="row add-form">
+                    <button class="col s4 offset-s4 btn waves-effect waves-light" type="submit" name="action">Submit
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script src="materialize-css/dist/js/materialize.min.js"></script>
     <script src="handlebars/dist/handlebars.js"></script>
     <script src="jquery/dist/jquery.js"></script>
+    <script src="./classes/Charts.js"></script>
     <script src="./classes/ExpenseManager.js"></script>
     <script src="./classes/Renderer.js"></script>
     <script src="main.js"></script>
 </body>
+
 </html>

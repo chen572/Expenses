@@ -10,4 +10,8 @@ class ExpenseManager {
     getExpenses(d1, d2) {
         return $.get(`/expenses?d1=${d1}&d2=${d2}`).then(e => { this.expenses = e })
     }
+
+    getChartData() {
+        return $.get('/chartdata')
+    }
 }

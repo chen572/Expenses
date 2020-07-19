@@ -9,6 +9,7 @@ router.get('/expenses', (req, res) => {
     let { d1, d2 } = req.query
     d1 = d1 || '1980-01-01'
     d2 = d2 || {}
+
     Expense
         .find({ date: { $gt: moment(d1), $lt: moment(d2) } })
         .sort({ date: -1 })
@@ -51,13 +52,29 @@ router.get('/expenses/:group', (req, res) => {
             }
         }, {
             $group: {
-                _id: null,
+                _id: "$group",
                 total: {
                     $sum: "$amount"
                 }
             }
-        }]).then(d => { res.send(d) })
+        }]).exec((e, d) => { res.send(d) })
     }
+})
+
+router.get('/chartdata', (req, res) => {
+    Expense.aggregate([{
+        $group: {
+            _id: "$group",
+            total: {
+                $sum: "$amount"
+            }
+        }
+    }]).exec((e, d) => { 
+        const groups = d.map(g => g._id)
+        const amount = d.map(a => a.total)
+        amount.forEach((e, i) => amount[i] = Math.floor(e))
+        res.send({groups, amount})
+    })
 })
 
 
